@@ -1,11 +1,11 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
-// const Container = styled.div`
-// position: absolute;
-// left: 50%;
-// top: 50%;
-// transform: translate(-50%, -50%) scale(1);
-// `;
+const Container = styled.div`
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%) scale(1);
+`;
 
 
 const Modal = ({ close, children }) => {
@@ -14,10 +14,10 @@ const Modal = ({ close, children }) => {
   };
 
   return (
-    <div>
+    <Container>
       <button onClick={closeHandler}>Close</button>
       {children}
-    </div>
+    </Container>
   );
 };
 
