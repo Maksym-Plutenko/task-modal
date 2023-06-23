@@ -2,26 +2,28 @@ import { lazy,  Suspense } from 'react';
 
 import { Routes, Route } from 'react-router-dom';
 
-import Month from 'components/calendar/Month';
-import Day from 'components/calendar/Day';
+// import Month from 'components/calendar/Month';
+// import Day from 'components/calendar/Day';
 
 
 
-const Start = lazy(() => import('../pages/Start'));
-const Register = lazy(() => import('../pages/Register'));
-const Login = lazy(() => import('../pages/Login'));
-const User = lazy(() => import('../pages/User'));
-const Statistics = lazy(() => import('../pages/Statistics'));
-const Calendar = lazy(() => import('../pages/Calendar'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+// const Start = lazy(() => import('../pages/Start'));
+// const Register = lazy(() => import('../pages/Register'));
+// const Login = lazy(() => import('../pages/Login'));
+// const User = lazy(() => import('../pages/User'));
+// const Statistics = lazy(() => import('../pages/Statistics'));
+// const Calendar = lazy(() => import('../pages/Calendar'));
+// const NotFound = lazy(() => import('../pages/NotFound'));
+
+const TaskModal = lazy(() => import('../components/TaskModal/TaskModal'));
 
 const App = () => {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
     <Routes>
-      <Route path="/" element={<Start />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/" element={<TaskModal />} />
+      {/* <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
         <Route
             path="/account"
@@ -37,7 +39,7 @@ const App = () => {
         <Route path="calendar/day/:currentDay" element={<Day />} />
       </Route>
 
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFound />} /> */}
     </Routes>
 
     </Suspense>
