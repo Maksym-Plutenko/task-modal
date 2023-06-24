@@ -19,10 +19,19 @@ const TaskModal = lazy(() => import('../components/TaskModal/TaskModal'));
 
 const App = () => {
 
+  const close = () => {
+    console.log ("window closed (almost)")
+  }
+
+  const task = {
+    start: "12:00", 
+    date: "2023-06-23"
+  }
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
     <Routes>
-      <Route path="/" element={<TaskModal />} />
+      <Route path="/" element={<TaskModal close={close} create={true} task={task}/>} />
       {/* <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
         <Route

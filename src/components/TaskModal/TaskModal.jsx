@@ -1,15 +1,15 @@
 import { createPortal } from 'react-dom';
 
-import {Modal} from './Modal';
-import {TaskForm} from './TaskForm';
+import { Modal } from './Modal';
+import { TaskForm } from './TaskForm';
 
-const TaskModal = ({data, close}) => {
-    return createPortal(
-     <Modal>
-        <TaskForm/>
-     </Modal>,
-      document.body
-    );
-  };
-  
-  export default TaskModal;
+const TaskModal = ({ close, create, task }) => {
+  return createPortal(
+    <Modal close={close}>
+      <TaskForm close={close} create={create} task={task} />
+    </Modal>,
+    document.body
+  );
+};
+
+export default TaskModal;
