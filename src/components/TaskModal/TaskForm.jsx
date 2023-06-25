@@ -1,12 +1,10 @@
 // import styled from 'styled-components';
-
-// temporarily
 // import axios from 'axios';
 // axios.defaults.baseURL = 'https://goosetrack-backend-2lsp.onrender.com/api/';
 
 import { useFormik } from 'formik';
 
-import { validate } from './validateTaskForm';
+// import { validate } from './utility/validateTaskForm';
 
 const TaskForm = ({ close, create, task }) => {
   const formik = useFormik({
@@ -16,7 +14,7 @@ const TaskForm = ({ close, create, task }) => {
       end: task.end || '09:30',
       priority: task.priority || 'low',
     },
-    validate,
+    // validate,
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
     },
