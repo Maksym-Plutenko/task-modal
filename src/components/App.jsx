@@ -24,7 +24,7 @@ const App = () => {
   }
 
   const task = {
-    start: "12:00", 
+    // start: "12:00", 
     date: "2023-06-23"
   }
 
