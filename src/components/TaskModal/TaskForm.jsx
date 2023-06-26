@@ -6,6 +6,8 @@ import { useFormik } from 'formik';
 
 // import { validate } from './utility/validateTaskForm';
 
+import { Button } from '../../styles/components';
+
 const TaskForm = ({ close, create, task }) => {
   const formik = useFormik({
     initialValues: {
@@ -122,17 +124,17 @@ const TaskForm = ({ close, create, task }) => {
 
       {create ? (
         <>
-          <button type="submit" onClick={addHandler}>
+          <Button type="submit" onClick={addHandler}>
             Add
-          </button>
-          <button type="button" onClick={closeHandler}>
+          </Button>
+          <Button type="button" onClick={closeHandler}>
             Cansel
-          </button>
+          </Button>
         </>
       ) : (
-        <button type="submit" onClick={editHandler}>
+        <Button type="submit" onClick={editHandler}>
           Edit
-        </button>
+        </Button>
       )}
     </form>
   );
