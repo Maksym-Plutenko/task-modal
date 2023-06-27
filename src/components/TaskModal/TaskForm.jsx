@@ -74,15 +74,15 @@ const RadioButton = styled.input`
   position: absolute;
 
   &:checked + label::before {
-    outline: 3px solid ${taskColors.priorityLow};
+    outline: 3px solid ${taskColors.priorityLow + '80'};
   }
 
   &:checked + label[for="medium"]::before {
-    outline-color: ${taskColors.priorityMedium};
+    outline-color: ${taskColors.priorityMedium + '80'};
   }
 
   &:checked + label[for="high"]::before {
-    outline-color: ${taskColors.priorityHigh};
+    outline-color: ${taskColors.priorityHigh + '80'};
   }
 `;
 
