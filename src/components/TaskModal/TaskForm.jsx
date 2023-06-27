@@ -135,7 +135,24 @@ const Button = styled.button`
   line-height: 18px;
   letter-spacing: 0em;
   text-align: center;
-  color: white;
+  color: #FFFFFF;
+`;
+
+const LightButton = styled.button`
+  width: 100%;
+  padding: 14px;
+  background-color: #EFEFEF;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #111111;
 `;
 
 const TaskForm = ({ close, create, task }) => {
@@ -263,9 +280,9 @@ const TaskForm = ({ close, create, task }) => {
             <AiOutlinePlus />
             Add
           </Button>
-          <Button type="button" onClick={closeHandler}>
+          <LightButton type="button" onClick={closeHandler}>
             Cansel
-          </Button>
+          </LightButton>
         </ButtonContainer>
       ) : (
         <Button type="submit" onClick={editHandler}>
