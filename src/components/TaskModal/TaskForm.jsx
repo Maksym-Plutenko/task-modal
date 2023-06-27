@@ -4,11 +4,12 @@
 
 import { useFormik } from 'formik';
 import { styled } from 'styled-components';
+import { AiOutlinePlus } from 'react-icons/ai';
+import { BsPencil } from 'react-icons/bs';
 
 // import { validate } from './utility/validateTaskForm';
 
-import {taskColors} from '../../styles/variables';
-
+import { taskColors } from '../../styles/variables';
 
 // import { Button } from '../../styles/components';
 
@@ -77,11 +78,11 @@ const RadioButton = styled.input`
     outline: 3px solid ${taskColors.priorityLow + '80'};
   }
 
-  &:checked + label[for="medium"]::before {
+  &:checked + label[for='medium']::before {
     outline-color: ${taskColors.priorityMedium + '80'};
   }
 
-  &:checked + label[for="high"]::before {
+  &:checked + label[for='high']::before {
     outline-color: ${taskColors.priorityHigh + '80'};
   }
 `;
@@ -105,11 +106,11 @@ const RadioLabel = styled.label`
     margin-right: 5px;
   }
 
-  &[for="medium"]::before {
+  &[for='medium']::before {
     background-color: ${taskColors.priorityMedium};
   }
 
-  &[for="high"]::before {
+  &[for='high']::before {
     background-color: ${taskColors.priorityHigh};
   }
 `;
@@ -233,7 +234,7 @@ const TaskForm = ({ close, create, task }) => {
             value="low"
             checked={formik.values.priority === 'low'}
           />
-          <RadioLabel for="low">Low</RadioLabel>
+          <RadioLabel htmlFor="low">Low</RadioLabel>
           <RadioButton
             id="medium"
             name="priority"
@@ -242,7 +243,7 @@ const TaskForm = ({ close, create, task }) => {
             value="medium"
             checked={formik.values.priority === 'medium'}
           />
-          <RadioLabel for="medium">Medium</RadioLabel>
+          <RadioLabel htmlFor="medium">Medium</RadioLabel>
           <RadioButton
             id="high"
             name="priority"
@@ -251,7 +252,7 @@ const TaskForm = ({ close, create, task }) => {
             value="high"
             checked={formik.values.priority === 'high'}
           />
-          <RadioLabel for="high">High</RadioLabel>
+          <RadioLabel htmlFor="high">High</RadioLabel>
         </RadioContainer>
         {/* <p>{formik.values.priority}</p> */}
       </div>
@@ -259,6 +260,7 @@ const TaskForm = ({ close, create, task }) => {
       {create ? (
         <ButtonContainer>
           <Button type="submit" onClick={addHandler}>
+            <AiOutlinePlus />
             Add
           </Button>
           <Button type="button" onClick={closeHandler}>
@@ -267,6 +269,7 @@ const TaskForm = ({ close, create, task }) => {
         </ButtonContainer>
       ) : (
         <Button type="submit" onClick={editHandler}>
+          <BsPencil />
           Edit
         </Button>
       )}

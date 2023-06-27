@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-
 import styled from 'styled-components';
+import { GrClose } from "react-icons/gr";
 
 const Container = styled.div`
 position: absolute;
@@ -21,6 +21,17 @@ const CloseBtn = styled.button`
   position: absolute;
   right: 14px;
   top: 14px;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 6px;
+
+  color: green;
+
+  // & > * {
+  //   height: 12px:
+  //   width: 12px;
+  // }
 `;
 
 // const Svg = styled.svg`
@@ -57,10 +68,11 @@ const Modal = ({ close, children }) => {
 
   return (
     <Container>
-      <CloseBtn onClick={closeHandler}>
-        <svg width="24px" height="24px">
+      <CloseBtn onClick={closeHandler} >
+        {/* <svg width="24px" height="24px">
           <use href="../../images/svg/sprite.svg#x-close"></use>
-        </svg>
+        </svg> */}
+        <GrClose/>
       </CloseBtn>
       {children}
     </Container>
