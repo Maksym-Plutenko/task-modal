@@ -3,10 +3,91 @@
 // axios.defaults.baseURL = 'https://goosetrack-backend-2lsp.onrender.com/api/';
 
 import { useFormik } from 'formik';
+import { styled } from 'styled-components';
 
 // import { validate } from './utility/validateTaskForm';
 
-import { Button } from '../../styles/components';
+// import { Button } from '../../styles/components';
+
+const Label = styled.label`
+  display: block;
+  width: 100%;
+
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  color: #343434cc;
+`;
+
+const Input = styled.input`
+  display: block;
+  min-width: 10px;
+  width: 100%;
+  height: 46px;
+
+  padding-left: 18px;
+  padding-right: 18px;
+  background-color: #f6f6f6;
+  border-radius: 8px;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  color: #343434;
+
+  border: none;
+  outline: none;
+
+  margin-top: 8px;
+`;
+
+const TimeContainer = styled.div`
+  display: flex;
+  gap: 14px;
+  width: 340px;
+
+  margin-top: 18px;
+  margin-bottom: 28px;
+`;
+
+const RadioContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  width: 340px;
+
+  margin-bottom: 32px;
+`;
+
+const RadioLabel = styled.label`
+font-family: Inter;
+font-size: 14px;
+font-weight: 600;
+line-height: 18px;
+letter-spacing: 0em;
+color: #343434;
+
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 14px;
+  width: 340px;
+`;
+
+const Button = styled.button`
+  width: 100%;
+  padding: 14px;
+  color: white;
+  background-color: #3e85f3;
+  border-radius: 8px;
+
+  border: none;
+  outline: none;
+`;
 
 const TaskForm = ({ close, create, task }) => {
   const formik = useFormik({
@@ -19,6 +100,12 @@ const TaskForm = ({ close, create, task }) => {
     // validate,
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
+
+      // if (create) {
+      //   addHandler();
+      // } else {
+      //   editHandler();
+      // }
     },
   });
 
@@ -55,9 +142,9 @@ const TaskForm = ({ close, create, task }) => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <div role="group">
-        <label>
+        <Label>
           Title
-          <input
+          <Input
             id="title"
             name="title"
             type="text"
@@ -65,72 +152,74 @@ const TaskForm = ({ close, create, task }) => {
             value={formik.values.title}
             placeholder="Enter text"
           />
-        </label>
-        <div>
-          <label>
+        </Label>
+        <TimeContainer>
+          <Label>
             Start
-            <input
+            <Input
               id="start"
               name="start"
               type="text"
               onChange={formik.handleChange}
               value={formik.values.start}
             />
-          </label>
-          <label>
+          </Label>
+          <Label>
             End
-            <input
+            <Input
               id="end"
               name="end"
               type="text"
               onChange={formik.handleChange}
               value={formik.values.end}
             />
-          </label>
-        </div>
+          </Label>
+        </TimeContainer>
 
-        <label>
-          Low
-          <input
-            name="priority"
-            type="radio"
-            onChange={formik.handleChange}
-            value="low"
-            checked={formik.values.priority === 'low'}
-          />
-        </label>
-        <label>
-          Medium
-          <input
-            name="priority"
-            type="radio"
-            onChange={formik.handleChange}
-            value="medium"
-            checked={formik.values.priority === 'medium'}
-          />
-        </label>
-        <label>
-          High
-          <input
-            name="priority"
-            type="radio"
-            onChange={formik.handleChange}
-            value="high"
-            checked={formik.values.priority === 'high'}
-          />
-        </label>
+        <RadioContainer>
+          <RadioLabel>
+            Low
+            <input
+              name="priority"
+              type="radio"
+              onChange={formik.handleChange}
+              value="low"
+              checked={formik.values.priority === 'low'}
+            />
+          </RadioLabel>
+          <RadioLabel>
+            Medium
+            <input
+              name="priority"
+              type="radio"
+              onChange={formik.handleChange}
+              value="medium"
+              checked={formik.values.priority === 'medium'}
+            />
+          </RadioLabel>
+          <RadioLabel>
+            High
+            <input
+              name="priority"
+              type="radio"
+              onChange={formik.handleChange}
+              value="high"
+              checked={formik.values.priority === 'high'}
+            />
+          </RadioLabel>
+        </RadioContainer>
         {/* <p>{formik.values.priority}</p> */}
       </div>
 
       {create ? (
-        <>
+        <ButtonContainer>
           <Button type="submit" onClick={addHandler}>
             Add
           </Button>
           <Button type="button" onClick={closeHandler}>
             Cansel
           </Button>
-        </>
+        </ButtonContainer>
       ) : (
         <Button type="submit" onClick={editHandler}>
           Edit

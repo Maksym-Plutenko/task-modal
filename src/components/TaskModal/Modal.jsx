@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -26,9 +28,32 @@ const CloseBtn = styled.button`
 // `;
 
 const Modal = ({ close, children }) => {
+  // const buttonRef = useRef();
+  // ref={buttonRef}
+
   const closeHandler = evt => {
     close();
   };
+
+  useEffect(() => {
+    // console.log(buttonRef);
+    // console.log(buttonRef.current);
+    const escHandler = evt => {
+      // console.log('Hello');
+      // console.log(evt.key);
+      // console.log(evt.code);
+
+      if (evt.key === 'Escape') {
+        close();
+      }
+    };
+
+    document.addEventListener('keydown', escHandler);
+
+    return () => {
+      document.removeEventListener('keydown', escHandler);
+    };
+  }, [close]);
 
   return (
     <Container>
