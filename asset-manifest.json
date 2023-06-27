@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/task-modal/static/css/main.8fa09c19.css",
-    "main.js": "/task-modal/static/js/main.7cb36b45.js",
-    "static/js/896.7fa731b9.chunk.js": "/task-modal/static/js/896.7fa731b9.chunk.js",
-    "static/js/706.01872621.chunk.js": "/task-modal/static/js/706.01872621.chunk.js",
+    "main.js": "/task-modal/static/js/main.acbce66e.js",
+    "static/js/62.96172029.chunk.js": "/task-modal/static/js/62.96172029.chunk.js",
+    "static/js/211.ca2bd9d2.chunk.js": "/task-modal/static/js/211.ca2bd9d2.chunk.js",
     "index.html": "/task-modal/index.html",
     "main.8fa09c19.css.map": "/task-modal/static/css/main.8fa09c19.css.map",
-    "main.7cb36b45.js.map": "/task-modal/static/js/main.7cb36b45.js.map",
-    "896.7fa731b9.chunk.js.map": "/task-modal/static/js/896.7fa731b9.chunk.js.map",
-    "706.01872621.chunk.js.map": "/task-modal/static/js/706.01872621.chunk.js.map"
+    "main.acbce66e.js.map": "/task-modal/static/js/main.acbce66e.js.map",
+    "62.96172029.chunk.js.map": "/task-modal/static/js/62.96172029.chunk.js.map",
+    "211.ca2bd9d2.chunk.js.map": "/task-modal/static/js/211.ca2bd9d2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8fa09c19.css",
-    "static/js/main.7cb36b45.js"
+    "static/js/main.acbce66e.js"
   ]
 }
