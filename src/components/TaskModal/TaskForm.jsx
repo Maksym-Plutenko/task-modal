@@ -3,9 +3,7 @@ import { useFormik } from 'formik';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { BsPencil } from 'react-icons/bs';
 
-// import { validate } from './utility/validateTaskForm';
-
-// import { Button } from '../../styles/components';
+import { validate } from './utility/validateTaskForm';
 
 import {
   Label,
@@ -17,17 +15,18 @@ import {
   ButtonContainer,
   Button,
   LightButton,
+  Err
 } from './TaskForm.styled';
 
 const TaskForm = ({ close, create, task }) => {
   const formik = useFormik({
     initialValues: {
-      title: task.title || '',
+      title: task.title || 'Enter text',
       start: task.start || '09:00',
       end: task.end || '09:30',
       priority: task.priority || 'low',
     },
-    // validate,
+    validate,
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
 
@@ -61,6 +60,7 @@ const TaskForm = ({ close, create, task }) => {
             value={formik.values.title}
             placeholder="Enter text"
           />
+          {formik.errors.title && <Err>{formik.errors.title}</Err>}
         </Label>
         <TimeContainer>
           <Label>
@@ -72,6 +72,7 @@ const TaskForm = ({ close, create, task }) => {
               onChange={formik.handleChange}
               value={formik.values.start}
             />
+            {formik.errors.start && <Err>{formik.errors.start}</Err>}
           </Label>
           <Label>
             End
@@ -82,6 +83,7 @@ const TaskForm = ({ close, create, task }) => {
               onChange={formik.handleChange}
               value={formik.values.end}
             />
+            {formik.errors.end && <Err>{formik.errors.end}</Err>}
           </Label>
         </TimeContainer>
 
@@ -114,7 +116,7 @@ const TaskForm = ({ close, create, task }) => {
           />
           <RadioLabel htmlFor="high">High</RadioLabel>
         </RadioContainer>
-        {/* <p>{formik.values.priority}</p> */}
+        {formik.errors.priority && <Err>{formik.errors.priority}</Err>}
       </div>
 
       {create ? (
