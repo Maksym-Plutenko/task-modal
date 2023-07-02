@@ -22,7 +22,7 @@ import {
 } from './TaskForm.styled';
 
 const TaskForm = ({ close, create, task }) => {
-  const startRef = useRef(); // add
+  // const startRef = useRef(); // add
   const prevStartRef = useRef(''); // add
   // const endRef = useRef(); // add
 
@@ -45,17 +45,16 @@ const TaskForm = ({ close, create, task }) => {
     },
   });
 
-  useEffect(() => {
+  useEffect(() => {  // add
     // add
     // console.log("Yello!");
     // console.log("prev  " + prevStartRef.current);
-    let currentStart = formik.values.start;
+    
     // console.log("now  " + currentStart);
     
+    let currentStart = formik.values.start;
     if (currentStart.length > prevStartRef.current.length) {
-      // console.log("WORK");
       currentStart = autocomplete(currentStart);
-      // startRef.current.value = currentStart;
       formik.values.start = currentStart;
     }
     prevStartRef.current = currentStart;
@@ -97,7 +96,7 @@ const TaskForm = ({ close, create, task }) => {
               onChange={formik.handleChange}
               value={formik.values.start}
               placeholder="XX:YY" // add
-              ref={startRef} // add
+              
             />
             {/* <p>start: {formik.values.start}</p> */}
             {formik.errors.start && <Err>{formik.errors.start}</Err>}
