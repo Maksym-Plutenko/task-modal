@@ -1,3 +1,6 @@
+import { useEffect, useRef } from 'react'; //add
+import { autocomplete } from './utility/autocompleteTaskForm'; //add
+
 import { useFormik } from 'formik';
 
 import { AiOutlinePlus } from 'react-icons/ai';
@@ -15,10 +18,14 @@ import {
   ButtonContainer,
   Button,
   LightButton,
-  Err
+  Err,
 } from './TaskForm.styled';
 
 const TaskForm = ({ close, create, task }) => {
+  const startRef = useRef(); // add
+  const prevStartRef = useRef(''); // add
+  // const endRef = useRef(); // add
+
   const formik = useFormik({
     initialValues: {
       title: task.title || 'Enter text',
@@ -36,6 +43,24 @@ const TaskForm = ({ close, create, task }) => {
       //   editHandler();
       // }
     },
+  });
+
+  useEffect(() => {
+    // add
+    // console.log("Yello!");
+    // console.log("prev  " + prevStartRef.current);
+    let currentStart = formik.values.start;
+    // console.log("now  " + currentStart);
+    
+    if (currentStart.length > prevStartRef.current.length) {
+      // console.log("WORK");
+      currentStart = autocomplete(currentStart);
+      // startRef.current.value = currentStart;
+      formik.values.start = currentStart;
+    }
+    prevStartRef.current = currentStart;
+
+    // autocomplete(formik.values.end);
   });
 
   const closeHandler = evt => {
@@ -71,7 +96,10 @@ const TaskForm = ({ close, create, task }) => {
               type="text"
               onChange={formik.handleChange}
               value={formik.values.start}
+              placeholder="XX:YY" // add
+              ref={startRef} // add
             />
+            {/* <p>start: {formik.values.start}</p> */}
             {formik.errors.start && <Err>{formik.errors.start}</Err>}
           </Label>
           <Label>
@@ -82,6 +110,7 @@ const TaskForm = ({ close, create, task }) => {
               type="text"
               onChange={formik.handleChange}
               value={formik.values.end}
+              placeholder="XX:YY" //add
             />
             {formik.errors.end && <Err>{formik.errors.end}</Err>}
           </Label>
